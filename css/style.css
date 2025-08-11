@@ -240,3 +240,67 @@ footer {
   from { transform: translateY(-50px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  nav a {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .hero {
+    padding: 3rem 1rem;
+  }
+
+  .hero h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .gallery-grid img {
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-circle {
+    width: 60px;
+    height: 60px;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .header p {
+    font-size: 0.9rem;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
