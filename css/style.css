@@ -1,0 +1,242 @@
+/* === GLOBAL STYLE === */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fdfcf7; /* krem lembut */
+  color: #444;
+  line-height: 1.6;
+  transition: background 0.3s ease;
+}
+
+img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* === HEADER === */
+.header {
+  background: linear-gradient(135deg, #6ab04c, #badc58); /* hijau segar */
+  color: white;
+  padding: 1rem 2rem;
+  animation: slideDown 0.6s ease-out;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.header p {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+/* === NAVIGATION === */
+nav {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0.7rem;
+  border-bottom: 1px solid #eee;
+}
+
+nav a {
+  color: #6ab04c;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+  background-color: #6ab04c;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* === HERO === */
+.hero {
+  background: url('../images/kantin-bg.jpg') center/cover no-repeat;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: white;
+  background-blend-mode: multiply;
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+.hero h2 {
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  background-color: #f6b93b; /* oranye lembut */
+  color: white;
+  padding: 0.8rem 1.6rem;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #e58e26;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* === ABOUT GRID === */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  color: #6ab04c;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.card p, 
+.card ul {
+  color: #555;
+  line-height: 1.6;
+}
+
+.card ul {
+  padding-left: 20px;
+}
+
+.card ul li {
+  margin-bottom: 8px;
+}
+
+/* === PROMO === */
+.promo {
+  padding: 2rem;
+  background-color: #fef5e7;
+  text-align: center;
+}
+
+.promo-box {
+  background-color: #fdebd0;
+  padding: 1rem;
+  border-radius: 12px;
+  display: inline-block;
+  font-weight: 500;
+}
+
+/* === GALLERY === */
+.gallery {
+  padding: 40px 20px;
+  background-color: #fafafa;
+  text-align: center;
+}
+
+.gallery h2 {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #444;
+  font-weight: 600;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
+
+/* === TESTIMONI === */
+.testimoni {
+  padding: 2rem;
+  background-color: #f4f9f3;
+}
+
+blockquote {
+  background-color: white;
+  padding: 1rem;
+  border-left: 5px solid #6ab04c;
+  border-radius: 8px;
+  font-style: italic;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+/* === JAM OPERASIONAL === */
+.jam-operasional {
+  padding: 2rem;
+}
+
+/* === FOOTER === */
+footer {
+  background-color: #6ab04c;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  box-shadow: 0 -3px 6px rgba(0,0,0,0.08);
+}
+
+/* === ANIMATIONS === */
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

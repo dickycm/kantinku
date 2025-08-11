@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 - Halaman Tidak Ditemukan</title>
+<style>
+  /* ===== Variabel Warna ===== */
+  :root {
+    --bg: #0a0f1c;
+    --accent1: #7c6cff;
+    --accent2: #5fb0ff;
+    --text: #e6eef6;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  /* ===== Background animasi gradien ===== */
+  .bg-gradient {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 30%, rgba(124,108,255,0.15), transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(95,176,255,0.1), transparent 50%);
+    animation: rotateBg 30s linear infinite;
+    z-index: 0;
+  }
+  @keyframes rotateBg {
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);}
+  }
+
+  /* ===== Kontainer utama ===== */
+  .container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    perspective: 1000px;
+  }
+
+  /* ===== Angka 404 ===== */
+  h1 {
+    font-size: clamp(72px, 15vw, 200px);
+    font-weight: 800;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 2s ease-in-out infinite alternate;
+    text-shadow: 0 0 20px rgba(124,108,255,0.5), 0 0 40px rgba(95,176,255,0.4);
+  }
+  @keyframes glow {
+    from { filter: drop-shadow(0 0 5px var(--accent1)); }
+    to { filter: drop-shadow(0 0 25px var(--accent2)); }
+  }
+
+  p {
+    max-width: 500px;
+    margin: 16px 0 24px;
+    color: #a5b4c8;
+    font-size: 1.1rem;
+  }
+
+  /* ===== Tombol ===== */
+  .btn {
+    display: inline-block;
+    margin: 6px;
+    padding: 12px 20px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    color: #fff;
+    box-shadow: 0 0 10px rgba(124,108,255,0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(124,108,255,0.8);
+  }
+
+  /* ===== Partikel ===== */
+  .particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    animation: float 8s infinite;
+  }
+  @keyframes float {
+    0% { transform: translateY(0) scale(1);}
+    50% { transform: translateY(-50px) scale(1.2);}
+    100% { transform: translateY(0) scale(1);}
+  }
+</style>
+</head>
+<body>
+<div class="bg-gradient"></div>
+
+<div class="container" id="parallax">
+  <h1>404</h1>
+  <p>Ups — Halaman yang Anda cari mungkin telah dipindahkan atau tidak pernah ada. Mari kembali ke jalur yang benar.</p>
+  <a href="javascript:history.back()" class="btn">↩️ Kembali</a>
+</div>
+
+<script>
+  // ===== Buat partikel acak =====
+  const totalParticles = 25;
+  for (let i = 0; i < totalParticles; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.top = Math.random() * 100 + 'vh';
+    p.style.animationDelay = (Math.random() * 8) + 's';
+    document.body.appendChild(p);
+  }
+
+  // ===== Efek parallax mengikuti mouse =====
+  const container = document.getElementById('parallax');
+  document.addEventListener('mousemove', (e) => {
+    const x = (window.innerWidth / 2 - e.pageX) / 50;
+    const y = (window.innerHeight / 2 - e.pageY) / 50;
+    container.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+  });
+</script>
+</body>
+</html>
