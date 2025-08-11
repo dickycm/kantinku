@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>404 - Halaman Tidak Ditemukan</title>
 <style>
-  /* ===== Variabel Warna ===== */
   :root {
     --bg: #0a0f1c;
     --accent1: #7c6cff;
@@ -27,7 +26,6 @@
     height: 100vh;
   }
 
-  /* ===== Background animasi gradien ===== */
   .bg-gradient {
     position: fixed;
     top: -50%;
@@ -44,7 +42,6 @@
     100% { transform: rotate(360deg);}
   }
 
-  /* ===== Kontainer utama ===== */
   .container {
     position: relative;
     z-index: 1;
@@ -57,7 +54,6 @@
     perspective: 1000px;
   }
 
-  /* ===== Angka 404 ===== */
   h1 {
     font-size: clamp(72px, 15vw, 200px);
     font-weight: 800;
@@ -79,7 +75,6 @@
     font-size: 1.1rem;
   }
 
-  /* ===== Tombol ===== */
   .btn {
     display: inline-block;
     margin: 6px;
@@ -97,31 +92,20 @@
     box-shadow: 0 0 20px rgba(124,108,255,0.8);
   }
 
-  /* ===== Partikel ===== */
   .particle {
     position: absolute;
     width: 6px;
     height: 6px;
     background: rgba(255,255,255,0.4);
     border-radius: 50%;
-    animation: float 8s infinite;
-  }
-  @keyframes float {
-    0% { transform: translateY(0) scale(1);}
-    50% { transform: translateY(-50px) scale(1.2);}
-    100% { transform: translateY(0) scale(1);}
   }
 
   @media (max-width: 600px) {
-  .btn {
-    padding: 10px 16px;
-    font-size: 0.9rem;
+    .particle {
+      width: 8px;
+      height: 8px;
+    }
   }
-  .particle {
-    display: none; /* Atau kurangi jumlah partikel via JS */
-  }
-}
-
 </style>
 </head>
 <body>
@@ -129,34 +113,58 @@
 
 <div class="container" id="parallax">
   <h1>404</h1>
-  <p>Ups — Halaman yang Anda cari mungkin telah dipindahkan atau tidak pernah ada. Mari kembali ke jalur yang benar.</p>
+  <p>😅 Sepertinya halaman ini lagi liburan. Ayo kembali sebelum kita ikut nyasar!</p>
   <a href="javascript:history.back()" class="btn">↩️ Kembali</a>
 </div>
 
 <script>
-  // ===== Buat partikel acak =====
   const totalParticles = 25;
   for (let i = 0; i < totalParticles; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
     p.style.left = Math.random() * 100 + 'vw';
     p.style.top = Math.random() * 100 + 'vh';
-    p.style.animationDelay = (Math.random() * 8) + 's';
     document.body.appendChild(p);
   }
 
-  // ===== Efek parallax mengikuti mouse =====
+  // Gerakan acak partikel untuk semua device
+  function animateParticles() {
+    document.querySelectorAll('.particle').forEach(p => {
+      const x = (Math.random() - 0.5) * 40;
+      const y = (Math.random() - 0.5) * 40;
+      p.animate(
+        [
+          { transform: `translate(${x}px, ${y}px)` },
+          { transform: `translate(${-x}px, ${-y}px)` }
+        ],
+        {
+          duration: 4000 + Math.random() * 2000,
+          direction: 'alternate',
+          iterations: Infinity,
+          easing: 'ease-in-out'
+        }
+      );
+    });
+  }
+  animateParticles();
+
   const container = document.getElementById('parallax');
-  document.addEventListener('mousemove', (e) => {
+
+  // Parallax untuk desktop
+  document.addEventListener('mousemove', e => {
     const x = (window.innerWidth / 2 - e.pageX) / 50;
     const y = (window.innerHeight / 2 - e.pageY) / 50;
     container.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
-
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-  document.removeEventListener('mousemove', mouseParallax);
-}
-
   });
+
+  // Parallax untuk mobile
+  if (/Mobi|Android/i.test(navigator.userAgent)) {
+    window.addEventListener('deviceorientation', e => {
+      const x = e.gamma / 10; // kiri-kanan
+      const y = e.beta / 10;  // atas-bawah
+      container.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+    });
+  }
 </script>
 </body>
 </html>
